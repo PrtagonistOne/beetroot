@@ -20,4 +20,4 @@ while user_session_flag:
     elif user_choice == 6:
         phonebook_func.search(user_choice)
     elif user_choice == 7:
-        print()
+        phonebook_func.del_contact()

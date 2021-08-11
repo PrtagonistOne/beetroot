@@ -8,7 +8,13 @@ def search_read():
 
 
 def del_contact():
-    print()
+    data = search_read()
+    phone_num = input('Input phone number to delete: ').strip().title()
+    for index, value in enumerate(data['contacts']):
+        if value['Phone number'] == phone_num:
+            data['contacts'].pop(index)
+    with open('phonebook_data.json', 'w') as f:
+        json.dump(data, f, indent=4)
 
 
 def search(option):
@@ -55,6 +61,4 @@ def add_contact():
         book_data_list = book_data['contacts']
         book_data_list.append(data)
         book_data['contacts'] = book_data_list
-        with open('phonebook_data.json', 'w') as f:
-            json.dump(book_data, f)
         print('New contact was added successfully!')

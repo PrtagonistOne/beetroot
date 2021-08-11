@@ -1,1 +1,32 @@
-{"contacts": [{"Phone number": "0506762599", "First name": "Sasha", "Last name": "Kop", "City or State": "Cherniv", "Full name": "Sasha Kop"}, {"Phone number": "0509697032", "First name": "S", "Last name": "", "City or State": "S", "Full name": "S "}, {"Phone number": "0509697032", "First name": "X", "Last name": "", "City or State": "X", "Full name": "X "}, {"Phone number": "0953403406", "First name": "Olga", "Last name": "Skakun", "City or State": "Troisdorf", "Full name": "Olga Skakun"}]}
+{
+    "contacts": [
+        {
+            "Phone number": "0506762599",
+            "First name": "Sasha",
+            "Last name": "Kop",
+            "City or State": "Cherniv",
+            "Full name": "Sasha Kop"
+        },
+        {
+            "Phone number": "0509697032",
+            "First name": "X",
+            "Last name": "",
+            "City or State": "X",
+            "Full name": "X "
+        },
+        {
+            "Phone number": "0953403406",
+            "First name": "Olga",
+            "Last name": "Skakun",
+            "City or State": "Troisdorf",
+            "Full name": "Olga Skakun"
+        },
+        {
+            "Phone number": "0506762599",
+            "First name": "Sasha",
+            "Last name": "Kop",
+            "City or State": "Niga",
+            "Full name": "Sasha Kop"
+        }
+    ]
+}
