@@ -21,3 +21,8 @@ while user_session_flag:
         phonebook_func.search(user_choice)
     elif user_choice == 7:
         phonebook_func.del_contact()
+    elif user_choice == 8:
+        phonebook_func.update_contact()
+    elif user_choice == 9:
+        user_session_flag = False
+        print('\tGOODBYE!')

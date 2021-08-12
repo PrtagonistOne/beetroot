@@ -1,6 +1,30 @@
 import json
 
 
+def update_contact():
+    data = search_read()
+    phone_num = input('Input contacts phone number to update: ').strip().title()
+    for index, value in enumerate(data['contacts']):
+        if value['Phone number'] == phone_num:
+            usr_update = input('Please choose a parameter to update (Input one of the parameters)\nPhone number, '
+                               'First name, Last name, Full name, City or State ').capitalize().strip()
+            print(usr_update)
+            if usr_update == 'Phone number':
+                value['Phone number'] = input('Input a new phone number: ')
+            elif usr_update == 'First name':
+                value['First name'] = input('Input a new First name: ')
+            elif usr_update == 'Last name':
+                value['Last name'] = input('Input a new Last name: ')
+            elif usr_update == 'Full name':
+                value['Full name'] = input('Input a new Full name: ')
+            elif usr_update == 'City or state':
+                value['City or State'] = input('Input a new City or State: ')
+            break
+    with open('phonebook_data.json', 'w') as f:
+        json.dump(data, f, indent=4)
+        print('Contact was updated successfully!')
+
+
 def search_read():
     with open('phonebook_data.json', 'r') as f:
         data = json.load(f)
