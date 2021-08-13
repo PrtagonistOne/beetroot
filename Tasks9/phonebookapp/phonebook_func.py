@@ -8,7 +8,6 @@ def update_contact():
         if value['Phone number'] == phone_num:
             usr_update = input('Please choose a parameter to update (Input one of the parameters)\nPhone number, '
                                'First name, Last name, Full name, City or State ').capitalize().strip()
-            print(usr_update)
             if usr_update == 'Phone number':
                 value['Phone number'] = input('Input a new phone number: ')
             elif usr_update == 'First name':
