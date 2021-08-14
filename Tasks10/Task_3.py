@@ -32,7 +32,7 @@ class TVController:
             input('Press any key to continue..')
 
     def previous_channel(self) -> None:
-        if self.current_channel == 0:
+        if self.current_channel < 0:
             TVController.last_channel(self)
         else:
             TVController.current_channel -= 1
