@@ -23,7 +23,7 @@ class TVController:
             print('Channel does not exist, try again')
 
     def next_channel(self) -> None:
-        if self.current_channel == len(self.channels) - 1:
+        if self.current_channel >= len(self.channels):
             TVController.first_channel(self)
         else:
             TVController.current_channel += 1
