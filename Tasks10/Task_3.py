@@ -1,12 +1,12 @@
 class TVController:
-    current_channel = 1
+    current_channel = 0
 
     def __init__(self, channels: list):
         self.channels = channels
 
     def first_channel(self) -> None:
         print(f'\tWELCOME TO CHANNEL #1\tYou are watching "{self.channels[0]}"')
-        TVController.current_channel = 1
+        TVController.current_channel = 0
         input('Press any key to continue..')
 
     def last_channel(self) -> None:
@@ -17,7 +17,7 @@ class TVController:
     def turn_channel(self, channel_number: int) -> None:
         try:
             print(f'\tWELCOME TO CHANNEL #{channel_number}\t You are watching "{self.channels[channel_number - 1]}" ')
-            TVController.current_channel = self.channels[channel_number]
+            TVController.current_channel = channel_number-1
             input('Press any key to continue..')
         except IndexError:
             print('Channel does not exist, try again')
@@ -26,18 +26,17 @@ class TVController:
         if self.current_channel == len(self.channels) - 1:
             TVController.first_channel(self)
         else:
-            print(TVController.current_channel, type(TVController.current_channel))
             TVController.current_channel += 1
             print(f'\tWELCOME TO CHANNEL #{self.current_channel+1}'
                   f'\tYou are watching "{self.channels[self.current_channel]}" ')
             input('Press any key to continue..')
 
     def previous_channel(self) -> None:
-        if self.current_channel == 1:
+        if self.current_channel == 0:
             TVController.last_channel(self)
         else:
-            self.current_channel -= 1
-            print(f'\tWELCOME TO CHANNEL #{self.current_channel}'
+            TVController.current_channel -= 1
+            print(f'\tWELCOME TO CHANNEL #{self.current_channel+1}'
                   f'\tYou are watching "{self.channels[self.current_channel]}" ')
             input('Press any key to continue..')
 
