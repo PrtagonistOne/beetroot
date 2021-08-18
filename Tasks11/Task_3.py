@@ -35,14 +35,14 @@ class ProductStore:
                     self.all_products[i].discount = int(percent * 100)
                     break
             else:
-                ValueError('Wrong product name, try again')
+                raise ValueError('Wrong product name, try again')
         elif identifier_type == 'type':
             for i, value in enumerate(self.all_products):
                 if value.product.type == identifier:
                     self.all_products[i].discount = int(percent * 100)
                     break
             else:
-                ValueError('Wrong product name, try again')
+                raise ValueError('Wrong product name, try again')
         else:
             raise ValueError('Wrong identifier, try again')
 
@@ -53,7 +53,7 @@ class ProductStore:
                 self.income += value.price_premium * amount
                 break
         else:
-            ValueError('Wrong product name, try again')
+            raise ValueError('Wrong product name, try again')
 
     def get_income(self) -> float:
         return self.income
@@ -67,7 +67,7 @@ class ProductStore:
                 a, b = (value.product.name, value.amount)  # packing a tuple
                 break
         else:
-            ValueError('Wrong product name, try again')
+            raise ValueError('Wrong product name, try again')
         tuple_value = (a, b)
         return tuple_value
 
