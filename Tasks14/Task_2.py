@@ -4,8 +4,8 @@ from functools import wraps
 def stop_words_log(words: list):
     def stop_words_dec(func):
         @wraps(func)
-        def stop_words_wrapper(*args, **kwargs):
-            user_string = ''.join(func(str(args)[2:-3]))  # cut off brackets and commas and marks below
+        def stop_words_wrapper(name):
+            user_string = func(name)
             for word in words:
                 user_string = user_string.replace(word, '*')
             return user_string
