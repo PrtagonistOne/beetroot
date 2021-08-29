@@ -8,7 +8,7 @@ class MyIterable:
         return self
 
     def __next__(self):
-        if len(self.some_string) == self.pointer:
+        if len(self.some_string) - 1 == self.pointer:
             raise StopIteration
         else:
             self.pointer += 1
@@ -18,6 +18,7 @@ class MyIterable:
 nums = MyIterable('0123456789')
 
 iter_nums = iter(nums)
+print(next(iter_nums))
 print(next(iter_nums))
 print(next(iter_nums))
 print(next(iter_nums))
