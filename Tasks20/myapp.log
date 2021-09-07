@@ -1,0 +1,98 @@
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 2
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 3
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 4
+INFO:root:Counter value returned
+ERROR:root:FileNotFoundError
+ERROR:root:FileNotFoundError
+ERROR:root:FileNotFoundError
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 0
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 0
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 0
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 0
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 0
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 1
+ERROR:root:FileNotFoundError
+INFO:root:Entering context manager...
+INFO:root:Count value has been uncreased by 1
+INFO:root:The context manager just closed with counter value 0
