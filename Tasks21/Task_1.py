@@ -1,10 +1,17 @@
+from typing import List
+
+
+class WorkerClean:
+    pass
+
+
 class Boss:
 
-    def __init__(self, id_: int, name: str, company: str):
+    def __init__(self, id_: int, name: str, company: str, workers: List[WorkerClean]):
         self.id = id_
         self.name = name
         self.company = company
-        self.workers = []
+        self.workers = workers
 
     @property
     def get_workers(self) -> list:
@@ -21,7 +28,7 @@ class Boss:
         return Boss.__str__(self)
 
 
-class Worker:
+class Worker(WorkerClean):
     def __init__(self, id_: int, name: str, company: str, boss: Boss):
         self.id = id_
         self.name = name
@@ -49,5 +56,5 @@ class Worker:
     def __str__(self) -> str:
         return f'id: {self.id}, name: {self.name}'
 
-    def __repr__(self)-> str:
+    def __repr__(self) -> str:
         return Worker.__str__(self)

@@ -1,0 +1,15 @@
+Task_1.py:7: error: Need type annotation for "workers" (hint: "workers: List[<type>] = ...")
+Found 1 error in 1 file (checked 1 source file)
+Task_1.py:7: error: Need type annotation for "workers" (hint: "workers: List[<type>] = ...")
+Found 1 error in 1 file (checked 1 source file)
+
+Task_1.py:10: error: Function "builtins.issubclass" is not valid as a type
+Task_1.py:10: note: Perhaps you need "Callable[...]" or a callback protocol?
+Task_1.py:14: error: Need type annotation for "workers" (hint: "workers: List[<type>] = ...")
+Task_1.py:31: error: Name "Worker" already defined on line 4
+
+Task_1.py:10: error: Function "builtins.issubclass" is not valid as a type
+Task_1.py:10: note: Perhaps you need "Callable[...]" or a callback protocol?
+Found 1 error in 1 file (checked 1 source file)
+
+Success: no issues found in 1 source file
