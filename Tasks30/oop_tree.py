@@ -46,7 +46,7 @@ class BinaryTree:
         if self.right_child:
             self.right_child.pre_order()
 
-    def post_order(self) -> None:
+    def post_order(self):
         if self.left_child:
             self.left_child.post_order()
         if self.right_child:
@@ -56,7 +56,7 @@ class BinaryTree:
     def in_order(self) -> None:
         if self.left_child:
             self.left_child.in_order()
-        print(self.get_root_val())
+        print(f"({self.get_root_val()})")
         if self.right_child:
             self.right_child.in_order()
 

@@ -1,9 +1,21 @@
 import operator
 from typing import Generic, TypeVar, List
-
 from oop_tree import BinaryTree
-
+from io import StringIO
+import sys
 T = TypeVar("T")
+
+
+class Capturing(list):
+    def __enter__(self):
+        self._stdout = sys.stdout
+        sys.stdout = self._stringio = StringIO()
+        return self
+
+    def __exit__(self, *args):
+        self.extend(self._stringio.getvalue().splitlines())
+        del self._stringio  # free up some memory
+        sys.stdout = self._stdout
 
 
 class Stack(Generic[T]):
@@ -25,39 +37,13 @@ class Stack(Generic[T]):
 
 
 def build_parse_tree(math_exp: str) -> BinaryTree:
+    tokens_list = math_exp.split()
     stack = Stack()
     tree: BinaryTree = BinaryTree('')
     stack.push(tree)
     current_tree = tree
 
-    temp_nums = math_exp
-    temp_signs = math_exp
-    temp = []
-
-    signs = ['+', '-', '*', '/', ')', '(']
-    nums = list(range(10))
-    for i in signs:
-        temp_nums = temp_nums.replace(i, ' ')
-    for i in nums:
-        temp_signs = temp_signs.replace(str(i), ' ')
-
-    for i in range(len(temp_signs.split())):
-        temp.append(temp_signs.split()[i])
-        if i < len(temp_nums.split()):
-            temp.append(temp_nums.split()[i])
-
-    s = ' '.join(temp)
-
-    temp_signs1 = []
-    for i in s.split():
-        if len(i) > 1 and not i.isdigit():
-            for j in range(0, len(i)):
-                temp_signs1.append(i[j])
-        else:
-            temp_signs1.append(i)
-
-    for i in temp_signs1:
-
+    for i in tokens_list:
         if i == '(':
             current_tree.insert_left('')
             stack.push(current_tree)
@@ -97,14 +83,25 @@ def evaluate(parse_tree):
         return parse_tree.get_root_val()
 
 
-def print_exp(tree: BinaryTree, inner = 1) -> str:
-    s_val = ""
+def print_exp(tree: BinaryTree):
+    s_val = ''
+
     if tree:
+
         s_val = '(' + print_exp(tree.get_left_child())
         s_val = s_val + str(tree.get_root_val())
-        s_val = s_val + print_exp(tree.get_right_child())+')'
-
+        s_val = s_val + print_exp(tree.get_right_child()) + ')'
+    if s_val.__len__() > 10:
+        temp = ''
+        for i in range(len(s_val) - 1):
+            if s_val[i + 1].isdigit():
+                temp += s_val[i+1]
+                continue
+            if not s_val[i].isdigit() and not s_val[i-1].isdigit():
+                temp += s_val[i]
+        print(temp[1:])
     return s_val
 
 
-print(evaluate(build_parse_tree('((10-8)*20)')))
+print_exp(build_parse_tree('( ( 10 - 8 ) )'))
+
