@@ -5,44 +5,46 @@ from typing import List
 
 class BinHeap:
 
-    def __init__(self, val) -> None:
-        self.heap_list: List[int] = [sum(val)]
+    def __init__(self) -> None:
+        self.heap_list: List[int] = [0]
         self.current_size: int = 0
-        self.s = sum(val)
 
     def perc_up(self, i) -> None:
         while i // 2 > 0:
-            if self.heap_list[i] > self.heap_list[i // 2]:
+            if self.heap_list[i] < self.heap_list[i // 2]:
                 self.heap_list[i // 2], self.heap_list[i] = self.heap_list[i], self.heap_list[i // 2]
             i //= 2
 
     def perc_down(self, i) -> None:
         while (i * 2) <= self.current_size:
-            mc = self.max_child(i)
-            if self.heap_list[i] < self.heap_list[mc]:
+            mc = self.min_child(i)
+            print(self.heap_list, "perc_down")
+            if self.heap_list[i] > self.heap_list[mc]:
                 self.heap_list[i], self.heap_list[mc] = self.heap_list[mc], self.heap_list[i]
             i = mc
 
-    def max_child(self, i) -> int:
+    def min_child(self, i) -> int:
         if i * 2 + 1 > self.current_size:
             return i * 2
-        if self.heap_list[i * 2] > self.heap_list[i * 2 + 1]:
+        if self.heap_list[i * 2] < self.heap_list[i * 2 + 1]:
             return i * 2
         else:
             return i * 2 + 1
 
-    def del_max(self) -> int:
+    def del_min(self) -> int:
+        print(self.heap_list, 'del_min_before_pop')
         ret_val = self.heap_list[1]
         self.heap_list[1] = self.heap_list[self.current_size]
         self.current_size -= 1
         self.heap_list.pop()
+        print(self.heap_list, 'del_min_after_pop')
         self.perc_down(1)
         return ret_val
 
     def build_heap(self, items: List[int]) -> None:
         i = len(items) // 2
         self.current_size = len(items)
-        self.heap_list = [self.s] + items[:]
+        self.heap_list = [0] + items[:]
         while i > 0:
             self.perc_down(i)
             i -= 1
@@ -54,9 +56,8 @@ class BinHeap:
 
 
 l1 = [5, 3, 2, 10, 9, 1]
-b = BinHeap(l1)
+b = BinHeap()
 b.build_heap(l1)
-print(b.heap_list)
-
+print(b.heap_list, '\n')
 for i in l1:
-    print(b.del_max(), end=' ')
+    print(b.del_min())
