@@ -18,7 +18,7 @@ class BinHeap:
     def perc_down(self, i) -> None:
         while (i * 2) <= self.current_size:
             mc = self.min_child(i)
-            print(self.heap_list, "perc_down")
+            #print(self.heap_list, "perc_down")
             if self.heap_list[i] > self.heap_list[mc]:
                 self.heap_list[i], self.heap_list[mc] = self.heap_list[mc], self.heap_list[i]
             i = mc
@@ -32,12 +32,12 @@ class BinHeap:
             return i * 2 + 1
 
     def del_min(self) -> int:
-        print(self.heap_list, 'del_min_before_pop')
+        #print(self.heap_list, 'del_min_before_pop')
         ret_val = self.heap_list[1]
         self.heap_list[1] = self.heap_list[self.current_size]
         self.current_size -= 1
         self.heap_list.pop()
-        print(self.heap_list, 'del_min_after_pop')
+        #print(self.heap_list, 'del_min_after_pop')
         self.perc_down(1)
         return ret_val
 
@@ -55,9 +55,4 @@ class BinHeap:
         self.perc_up(self.current_size)
 
 
-l1 = [5, 3, 2, 10, 9, 1]
-b = BinHeap()
-b.build_heap(l1)
-print(b.heap_list, '\n')
-for i in l1:
-    print(b.del_min())
+
