@@ -1,0 +1,12 @@
+Input the text to encrypt: 'Hello@'
+Input the key(digits only): 2
+Received b'JGNNQQ'
+
+starting up on localhost port 65432
+waiting for a connection
+connection from ('127.0.0.1', 60350)
+received b'JGNNQq'
+sending data back to the client
+received b''
+no data from ('127.0.0.1', 60350)
+waiting for a connection

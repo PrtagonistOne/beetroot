@@ -1,0 +1,7 @@
+Message from Server b'Hello UDP Client!'
+Message from Server b'Hello UDP Client!'
+UDP server up and listening on 127.0.0.1:20001
+Message from Client: b'Hello UDP Server'
+Client IP Address: ('127.0.0.1', 53371)
+Message from Client: b'Hello UDP Server'
+Client IP Address: ('127.0.0.1', 47634)
