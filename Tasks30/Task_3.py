@@ -91,8 +91,8 @@ def print_exp(tree: BinaryTree):
         s_val = '(' + print_exp(tree.get_left_child())
         s_val = s_val + str(tree.get_root_val())
         s_val = s_val + print_exp(tree.get_right_child()) + ')'
-    if s_val.__len__() > 10:
-        temp = ''
+    if s_val.__len__() > 10:  # Выбрал 10 потому что это количество рекурсий в смысле в стеке рекурсии встречается
+        temp = ''  # встречается почти во всем случаях, кроме значений меньше того что на строке 106
         for i in range(len(s_val) - 1):
             if s_val[i + 1].isdigit():
                 temp += s_val[i+1]

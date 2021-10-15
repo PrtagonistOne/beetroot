@@ -1,82 +1,61 @@
-import json
+from typing import List
 
 
-def update_contact(phone_num=None, first_name=None, last_name=None, city_state=None, new_phone_num=None):
-    data_list = search_read()
-    if new_phone_num is None:
-        new_phone_num = phone_num
-    for index, value in enumerate(data_list):
-        if value['Phone number'] == phone_num:
-            value['Phone number'] = new_phone_num
-            value['First name'] = first_name
-            value['Last name'] = last_name
-            value['Full name'] = first_name + ' ' + last_name
-            value['City or State'] = city_state
-            break
-    with open('phonebookapp/phonebook_data.json', 'r+') as f:
-        json.dump(data_list, f, indent=4)
-
-    return data_list
+class WorkerClean:
+    pass
 
 
-def search_read():
-    with open('phonebookapp/phonebook_data.json', 'r') as f:
-        data = json.load(f)
-    return data
+class Boss:
+
+    def __init__(self, id_: int, name: str, company: str, workers: List[WorkerClean]):
+        self.id = id_
+        self.name = name
+        self.company = company
+        self.workers = workers
+
+    @property
+    def get_workers(self) -> list:
+        return self.workers
+
+    def add_worker(self, worker) -> None:
+        self.workers.append(worker)
+        print(f'A new worker "{worker}" was added!')
+
+    def __str__(self) -> str:
+        return f'id: {self.id}, name: {self.name}'
+
+    def __repr__(self) -> str:
+        return Boss.__str__(self)
 
 
-def del_contact():
-    data = search_read()
-    phone_num = input('Input phone number to delete: ').strip().title()
-    for index, value in enumerate(data['contacts']):
-        if value['Phone number'] == phone_num:
-            data['contacts'].pop(index)
-    with open('phonebook_data.json', 'w') as f:
-        json.dump(data, f, indent=4)
+class Worker(WorkerClean):
+    def __init__(self, id_: int, name: str, company: str, boss: Boss):
+        self.id = id_
+        self.name = name
+        self.company = company
+        self.boss = boss
 
+    @property
+    def get_boss(self) -> Boss:
+        return self.boss
 
-def search(option):
-    data = search_read()
-    if option == 2:
-        first_name = input('Input first name: ').strip().title()
-        for index, value in enumerate(data['contacts']):
-            if value['First name'] == first_name:
-                print(value)
-    elif option == 3:
-        last_name = input('Input last name: ').strip().title()
-        for index, value in enumerate(data['contacts']):
-            if value['Last name'] == last_name:
-                print(value)
-    elif option == 4:
-        full_name = input('Input full name: ').strip().title()
-        for index, value in enumerate(data['contacts']):
-            if value['Full name'] == full_name:
-                print(value)
-    elif option == 5:
-        phone_num = input('Input phone number: ').strip()
-        for index, value in enumerate(data['contacts']):
-            if value['Phone number'] == phone_num:
-                print(value)
-    elif option == 5:
-        city_state = input('Input city or state: ').strip()
-        for index, value in enumerate(data['contacts']):
-            if value['City or State'] == city_state:
-                print(value)
+    @get_boss.setter
+    def get_boss(self, boss: Boss) -> None:
+        if isinstance(boss, Boss):
+            self.boss = boss
+            boss.workers.append(self)
+            print('boss setter invoked')
+        else:
+            raise ValueError('You can pass only Boss objects')
 
+    @get_boss.deleter
+    def get_boss(self) -> None:
+        print('Worker have moved to a different company\'s boss')
+        del self.boss
 
-def add_contact(phone_num=None, first_name=None, last_name=None, city_state=None):
-    contact_list = search_read()
-    data = {'Phone number': phone_num, 'First name': first_name, 'Last name': last_name, 'City or State': city_state}
-    if (data['First name'] is not None) and (data['Last name'] is not None):
-        data['Full name'] = data['First name'].title() + ' ' + data['Last name'].title()
-    if data['Phone number'] is None or len(data['Phone number']) != 10:
-        data.clear()
-        print('Contact was not added, try again')
-    else:
-        print('New contact was added successfully!')
+    def __str__(self) -> str:
+        return f'id: {self.id}, name: {self.name}'
 
-    with open('phonebookapp/phonebook_data.json', 'r+') as f:
-        contact_list.append(data)
-        json.dump(contact_list, f, indent=4)
+    def __repr__(self) -> str:
+        return Worker.__str__(self)
 
-    return contact_list
