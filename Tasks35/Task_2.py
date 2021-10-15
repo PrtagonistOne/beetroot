@@ -7,7 +7,7 @@ class ServerThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
 
-    def run_server(self):
+    def run(self):
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -47,7 +47,7 @@ class ClientThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
 
-    def run_client(self):
+    def run(self):
         def encrypt(text, s):
             result = ""
             # transverse the plain text
@@ -77,4 +77,4 @@ class ClientThread(threading.Thread):
 if __name__ == '__main__':
     ServerThread1 = ServerThread()
     ServerThread1.start()
-    ServerThread1.run_server()
+
