@@ -35,4 +35,4 @@ while True:
     elif user_choice == 9:
         break
     else:
-        break
+        continue
