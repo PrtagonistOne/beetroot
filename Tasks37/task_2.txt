@@ -1,0 +1,6 @@
+[
+ "You don't. It's just not enough for uploading videos. You can use it for something else, like updating description etc.",
+ "For sure, but make sure to see what happened at the end of experiment and why it may not work.",
+ "Hi there, from the /r/Python mods.\n\nWe require a text post for projects posted to the subreddit in an attempt to increase overall quality of the posts on the subreddit.\n\nPlease resubmit your post as a text post with a link to your source code, you may include inline images (quite easy if you are on new reddit).\n\nMake sure to follow the rules of the subreddit and post a link to your source code as well as a textual description, you must have more than just an image.\n\nWarm regards and all the best for your future Pythoneering,\n\n/r/Python moderator team\n\n*I am a bot, and this action was performed automatically. Please [contact the moderators of this subreddit](/message/compose/?to=/r/Python) if you have any questions or concerns.*",
+ "I got banned from the entire Alphabet product suite using Python!"
+]
