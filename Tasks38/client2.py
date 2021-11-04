@@ -1,42 +1,60 @@
 import logging
 import socket
-import asyncio
+from threading import Thread
 
 
 from config.init_logging import init_logging
+from shared.typing import T_CONNECTION
 
 
-async def send_message(connection: socket.socket, message: str) -> None:
-    connection.sendall(message.encode())
+def send_message(connection: socket.socket) -> None:
+    print('for the list of commands type "/help"')
+    while True:
+        message = input(': ')
+        connection.sendall(message.encode())
+        if message == '/quit':
+            exit()
 
 
-async def receive_message(connection: socket.socket) -> None:
-    data = connection.recv(1024)
-    print(data.decode())
+def display_message(message: str) -> None:
+    print(message)
 
 
-async def run_client(host: str, port: int):
+def receive_message(connection: socket.socket) -> None:
+    while True:
+        data = connection.recv(1024)
+        if data.decode() == "":
+            exit()
+        display_message(data.decode())
+
+
+def handle_connection(connection: T_CONNECTION) -> None:
+    Thread(
+        target=receive_message,
+        args=(connection,),
+        daemon=True,
+    ).start()
+    send_message(connection=connection)
+
+
+
+def run_client(host: str, port: int):
     logging.info('run_client')
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as conn:
         logging.info(f'Connection to server: {host=} {port=}')
         conn.connect((host, port))
         logging.info('connected')
-        print("(If wish to quite input \'q\')\n")
-        while True:
-            message = input(': ')
-            if message == 'q':
-                break
-            await send_message(connection=conn, message=message)
-            await receive_message(connection=conn)
+
+        handle_connection(connection=conn)
 
 
-async def main():
+def main():
     host = '127.0.0.1'
     port = 65432
 
-    await run_client(host=host, port=port)
+    run_client(host=host, port=port)
 
 
 if __name__ == '__main__':
     init_logging()
-    asyncio.run(main())
+    main()
