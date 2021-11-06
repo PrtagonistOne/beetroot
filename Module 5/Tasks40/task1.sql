@@ -22,13 +22,13 @@ FROM employees
 JOIN jobs USING(job_id);
 -- 7
 SELECT DISTINCT job_title, ((jobs.max_salary+jobs.min_salary)/2) AS "Average salary" FROM employees
-JOIN jobs USING(job_id)
+JOIN jobs USING(job_id);
 -- 8
 SELECT employees.first_name || " " || employees.last_name AS 'full name', employees.salary FROM employees
 JOIN departments USING(department_id) WHERE (SELECT department_id FROM departments
-JOIN locations USING (location_id) WHERE city == 'London')
+JOIN locations USING (location_id) WHERE city == 'London');
 -- 9
 SELECT COUNT(employees.department_id) AS 'Amount in Department', depart_name
 FROM employees, departments
 WHERE employees.department_id = departments.department_id
-GROUP BY employees.department_id
+GROUP BY employees.department_id;
