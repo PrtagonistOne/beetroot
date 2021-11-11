@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  example:
+    volumes:
+      - "./run_app.py:/wd/run_app.py:ro"
+      - "./app:/wd/app:ro"
+      - "./config:/wd/config:ro"
+  db:
+    ports:
+      - "48432:5432"
