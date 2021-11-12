@@ -1,0 +1,24 @@
+li a {
+    color: green;
+    display: inline-block;
+    padding-left: 25px;
+    font-size: 50px;
+    text-shadow: 2px 2px 3px black;
+}
+
+ul {
+    border: 1px solid;
+}
+
+
+body {
+    background: white url("images/background.jpeg") no-repeat;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%; /* Современные браузеры */
+}
+
+a:hover {
+  color: orange;
+}
