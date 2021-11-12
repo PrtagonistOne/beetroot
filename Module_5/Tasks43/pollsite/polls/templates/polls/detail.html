@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ question.question_text }}</h1>
+    <hr>
+    {% if question.choice_set.all %}
+    <p>Please voted and here are what they have said: </p>
+    <ul>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h4>Nobody voted for this question yet..</h4>
+    {% endif %}
+</body>
+</html>
