@@ -1,0 +1,10 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+django_polls.egg-info/PKG-INFO
+django_polls.egg-info/SOURCES.txt
+django_polls.egg-info/dependency_links.txt
+django_polls.egg-info/requires.txt
+django_polls.egg-info/top_level.txt
