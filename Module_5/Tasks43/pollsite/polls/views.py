@@ -4,7 +4,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-
+from django.shortcuts import render
+from django.views.generic import TemplateView
+from pollsite.tasks import hello_world
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -16,7 +18,8 @@ def vote(request, question_id):
     try:
         selected_choice = question.choices.get(choice_text=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
-        return render(request, 'polls/detail.html', {'question': question, 'error_message': "You didn't select a choice",})
+        return render(request, 'polls/detail.html',
+                      {'question': question, 'error_message': "You didn't select a choice", })
     else:
         selected_choice.votes += 1
         selected_choice.save()
@@ -26,6 +29,12 @@ def vote(request, question_id):
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        hello_world()
+        return context
+
     return render(request, 'polls/index.html', context)
 
 
