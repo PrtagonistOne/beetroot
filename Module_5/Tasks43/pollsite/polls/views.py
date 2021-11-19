@@ -5,8 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from pollsite.tasks import hello_world
+from pollsite.tasks import add, mul, xsum
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -26,18 +25,6 @@ def vote(request, question_id):
     return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
-def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
-
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        hello_world()
-        return context
-
-    return render(request, 'polls/index.html', context)
-
-
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/detail.html', {'question': question})
@@ -52,6 +39,9 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to be
         published in the future).
         """
+        add.delay(5, 5)
+        mul.delay(5, 5)
+        xsum.delay(list(range(5)))
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 

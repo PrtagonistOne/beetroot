@@ -1,8 +1,24 @@
+# Create your tasks here
+from celery import shared_task
 from time import sleep
-from pollsite.celery import app
+
+@shared_task
+def add(x, y):
+    sleep(2)
+    print(x + y)
 
 
-@app.task
-def hello_world():
-    sleep(5)  # поставим тут задержку в 10 сек для демонстрации ассинхрности
-    print('Hello World')
+@shared_task
+def mul(x, y):
+    sleep(4)
+    print(x * y)
+
+
+@shared_task
+def xsum(numbers):
+    sleep(6)
+    print(sum(numbers))
+
+
+
+
