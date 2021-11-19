@@ -1,0 +1,8 @@
+aiogram==2.16
+
+uvloop==0.16.0
+ujson==4.2.0
+cchardet==2.1.7
+aiohttp[speedups]==3.8.1
+
+pydantic[dotenv]==1.8.2
