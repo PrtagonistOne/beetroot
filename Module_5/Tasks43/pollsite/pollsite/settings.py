@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-8tbs#g4w*5!0e5e8hle=%!e7q1vv95x#!(#t$$%)_-mgr-7+4$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -132,3 +132,9 @@ CELERY_BROKER_URL = "redis://localhost"
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'playerdna4@gmail.com'
+EMAIL_HOST_PASSWORD = 'uhipisvlksunjsiy'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True

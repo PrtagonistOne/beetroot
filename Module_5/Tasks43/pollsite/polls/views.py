@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.shortcuts import render
-from pollsite.tasks import add, mul, xsum
+from pollsite.tasks import add, mul, xsum, send_email_task
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -42,6 +42,7 @@ class IndexView(generic.ListView):
         add.delay(5, 5)
         mul.delay(5, 5)
         xsum.delay(list(range(5)))
+        send_email_task.delay()
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
 
